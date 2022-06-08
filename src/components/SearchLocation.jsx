@@ -2,8 +2,8 @@ import React from 'react'
 const SearchLocation = ({seachTerm,handleSearch,handleFormSubmit}) => {
   return (
     <form onSubmit={handleFormSubmit}>
-    <label   htmlFor="searchTerm">Search by Location:</label>
-                <input  
+    <label   htmlFor="searchTerm"></label>
+                <input className='search-input'  
                     type="text" 
                     name="searchTerm" 
                     id="searchTerm" 
@@ -11,7 +11,7 @@ const SearchLocation = ({seachTerm,handleSearch,handleFormSubmit}) => {
                     value={seachTerm} 
                     onChange={handleSearch}
                 />
-                 <button>Search</button>
+                 <button className='searchBtn'>Search</button>
     </form>
   )
 }
