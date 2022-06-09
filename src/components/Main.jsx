@@ -2,13 +2,14 @@ import React, { useEffect, useState } from "react";
 import SearchLocation from "./SearchLocation";
 import Weatherday from "./Weatherday";
 import getLocation from "../Api";
-
+import DetailWeather from "./DetailWeather";
 
 const apiKey = process.env.REACT_APP_API_KEY;
 
 const Main = () => {
   const [weatherInfo, setWeatherInfo] = useState();
   const [searchTerm, setSearchTerm] = useState("dumfries, VA");
+  const [selectedDay, setSelectedDay] = useState(null);
   
 
   const daysOfWeek = [
@@ -36,7 +37,7 @@ const Main = () => {
           .then((data) =>
             setWeatherInfo(
               data.daily.map((df) => {
-        
+                setSelectedDay(null);
                 console.log(df.dt);
                 const newDay = new Date(df.dt * 1000);
                 const localDay = newDay.toLocaleDateString("en-US");
@@ -65,7 +66,10 @@ const Main = () => {
           .catch((erorr) => console.log(erorr));
       })
       .catch((erorr) => console.log(erorr));
+      
+
   };
+ 
   useEffect(() => {
     getweather();
   }, []);
@@ -110,13 +114,36 @@ const Main = () => {
                 desc = {i.desc}
                 today={i.today}
                 humidity={i.humidity}
-               
+                // isselected={i.currentDay === selectedDayy}
+                selectedDayy={() =>
+                  setSelectedDay(i)
+                }
               />
             </div>
           ))}
       </div>
       <div  >
-     
+      {selectedDay ?  (
+        
+         
+        <DetailWeather
+        min={Math.round(selectedDay.min)}
+        max={Math.round(selectedDay.max)}
+        weatherType={selectedDay.weatherType}
+        weatherIcon={selectedDay.weatherIcon}
+        daysOfWeek={selectedDay.daysOfWeek}
+        current={Math.round(selectedDay.current)}
+        desc = {selectedDay.desc}
+        humidity={selectedDay.humidity}
+
+        />
+      
+      )
+       : (
+        <h3>{daysOfWeek.length ? "Click on a day above to view!" : null}</h3>
+      )
+    
+      }
       </div>
      
     </div>
