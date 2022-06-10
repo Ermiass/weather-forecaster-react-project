@@ -29,9 +29,7 @@ body {
   display: flex;
   margin-top: 5px;
 }
-.days {
-  /* border: 1px 1px 1px rgb(190, 190, 235); */
-}
+
 .temp-wrap {
   text-align: center;
   display: flex;
@@ -47,6 +45,8 @@ body {
   align-items: center;
   justify-content: center;
   color: white;
+  cursor:pointer;
+  
 }
 .search {
   /* display: flex; */

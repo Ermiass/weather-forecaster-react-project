@@ -1,4 +1,5 @@
-import React from "react";
+import React from 'react';
+import PropTypes from 'prop-types';
 
 const DetailWeather = ({
   min,
@@ -33,6 +34,16 @@ const DetailWeather = ({
       </p>
     </div>
   );
+};
+DetailWeather.propTypes = {
+  min: PropTypes.number.isRequired,
+  max: PropTypes.number.isRequired,
+  weatherType: PropTypes.string.isRequired,
+  current: PropTypes.number.isRequired,
+  daysOfWeek: PropTypes.string.isRequired,
+  weatherIcon: PropTypes.string.isRequired,
+  desc: PropTypes.string.isRequired,
+  humidity: PropTypes.number.isRequired,
 };
 
 export default DetailWeather;
