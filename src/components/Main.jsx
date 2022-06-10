@@ -1,25 +1,24 @@
-import React, { useEffect, useState } from "react";
-import SearchLocation from "./SearchLocation";
-import Weatherday from "./Weatherday";
-import getLocation from "../Api";
-import DetailWeather from "./DetailWeather";
+import React, { useEffect, useState } from 'react';
+import SearchLocation from './SearchLocation';
+import Weatherday from './Weatherday';
+import getLocation from '../Api';
+import DetailWeather from './DetailWeather';
 
 const apiKey = process.env.REACT_APP_API_KEY;
 
 const Main = () => {
   const [weatherInfo, setWeatherInfo] = useState();
-  const [searchTerm, setSearchTerm] = useState("dumfries, VA");
+  const [searchTerm, setSearchTerm] = useState('dumfries, VA');
   const [selectedDay, setSelectedDay] = useState(null);
-  
 
   const daysOfWeek = [
-    "Sunday",
-    "Monday",
-    "Tuesday",
-    "Wednsday",
-    "Thursday",
-    "Friday",
-    "Saturday",
+    'Sunday',
+    'Monday',
+    'Tuesday',
+    'Wednsday',
+    'Thursday',
+    'Friday',
+    'Saturday',
   ];
 
   const getweather = () => {
@@ -31,7 +30,7 @@ const Main = () => {
           `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=hourly,minutely&units=imperial&appid=${apiKey}`
         )
           .then((res) => res.json())
-          //  .then(res=>console.log(res))
+          // .then((res) => console.log(res))
 
           //  .then(res=>console.log(daysOfWeek[new Date(res.daily[0].dt).getDay()]))
           .then((data) =>
@@ -40,7 +39,7 @@ const Main = () => {
                 setSelectedDay(null);
                 console.log(df.dt);
                 const newDay = new Date(df.dt * 1000);
-                const localDay = newDay.toLocaleDateString("en-US");
+                const localDay = newDay.toLocaleDateString('en-US');
                 const currentDay = daysOfWeek[new Date(localDay).getDay()];
                 //  console.log(new Date(localDay).getDay());
                 console.log(newDay);
@@ -54,26 +53,20 @@ const Main = () => {
                   daysOfWeek: currentDay,
                   // city: df.city.name,
                   // country: df.city.country,
-                  desc: df.weather ? df.weather[0].description:null,
-                  today:newDay,
-                  humidity : df.humidity
-              };
-              }
-              
-              )
-            )
-          )
+                  desc: df.weather ? df.weather[0].description : null,
+                  humidity: df.humidity,
+                };
+              })
+            ))
           .catch((erorr) => console.log(erorr));
       })
       .catch((erorr) => console.log(erorr));
-      
-
   };
- 
+
   useEffect(() => {
     getweather();
   }, []);
-  
+
   const handleSearch = (e) => {
     setSearchTerm(e.target.value);
   };
@@ -93,14 +86,15 @@ const Main = () => {
         </div>
         <h1>
           {searchTerm
-            ? "Weather Info for " + searchTerm + ":"
-            : "Find weather by location"}
+            ? 'Weather Info for ' + searchTerm + ':'
+            : 'Find weather by location'}
         </h1>
       </div>
 
       <div className="main">
         {weatherInfo &&
           weatherInfo.map((i, index) => (
+            // eslint-disable-next-line react/no-array-index-key
             <div className="days" key={index}>
               <Weatherday
                 min={Math.round(i.min)}
@@ -109,43 +103,38 @@ const Main = () => {
                 weatherIcon={i.weatherIcon}
                 daysOfWeek={i.daysOfWeek}
                 current={Math.round(i.current)}
-                city={i.city}
+                // city={i.city}
                 country={i.country}
-                desc = {i.desc}
+                desc={i.desc}
                 today={i.today}
                 humidity={i.humidity}
                 // isselected={i.currentDay === selectedDayy}
                 selectedDayy={() =>
-                  setSelectedDay(i)
-                }
+                  setSelectedDay(i)}
               />
             </div>
           ))}
       </div>
-      <div  >
-      {selectedDay ?  (
-        
-         
-        <DetailWeather
-        min={Math.round(selectedDay.min)}
-        max={Math.round(selectedDay.max)}
-        weatherType={selectedDay.weatherType}
-        weatherIcon={selectedDay.weatherIcon}
-        daysOfWeek={selectedDay.daysOfWeek}
-        current={Math.round(selectedDay.current)}
-        desc = {selectedDay.desc}
-        humidity={selectedDay.humidity}
+      <div>
+        {selectedDay ? (
 
-        />
-      
-      )
-       : (
-        <h3>{daysOfWeek.length ? "Click on a day above to view!" : null}</h3>
-      )
-    
-      }
+          <DetailWeather
+            min={Math.round(selectedDay.min)}
+            max={Math.round(selectedDay.max)}
+            weatherType={selectedDay.weatherType}
+            weatherIcon={selectedDay.weatherIcon}
+            daysOfWeek={selectedDay.daysOfWeek}
+            current={Math.round(selectedDay.current)}
+            desc={selectedDay.desc}
+            humidity={selectedDay.humidity}
+          />
+
+        )
+          : (
+            <h3>{daysOfWeek.length ? 'Click on a day above to view!' : null}</h3>
+          )}
       </div>
-     
+
     </div>
   );
 };

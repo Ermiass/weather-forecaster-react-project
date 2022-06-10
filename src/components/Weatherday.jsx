@@ -1,20 +1,19 @@
-import React from "react";
+import React from 'react';
 
-const Weatherday = ({
+import PropTypes from 'prop-types';
+
+function Weatherday({
   min,
   max,
-  city,
   weatherType,
-  country,
   weatherIcon,
   daysOfWeek,
   current,
   selectedDayy,
-  today
-}) => {
+}) {
   return (
+    // eslint-disable-next-line jsx-a11y/click-events-have-key-events
     <div onClick={selectedDayy}>
-      {country}
       <strong>{daysOfWeek}</strong>
       <div>
         <strong>{current}</strong>
@@ -27,9 +26,17 @@ const Weatherday = ({
         Min:{min}°F Max:{max}°F
       </div>
       <div>{weatherType}</div>
-      {/* {today} */}
     </div>
   );
+}
+Weatherday.propTypes = {
+  min: PropTypes.number.isRequired,
+  max: PropTypes.number.isRequired,
+  weatherType: PropTypes.string.isRequired,
+  selectedDayy: PropTypes.func.isRequired,
+  current: PropTypes.number.isRequired,
+  daysOfWeek: PropTypes.string.isRequired,
+  weatherIcon: PropTypes.string.isRequired,
 };
 
 export default Weatherday;
