@@ -7,6 +7,7 @@ import getLocation from '../Api';
 import DetailWeather from './DetailWeather';
 import Footer from './Footer';
 import Header from './Header';
+import Button from './Button';
 
 const DaysContainer = styled.div`
 margin-left: 90px;
@@ -38,7 +39,12 @@ margin-left: 90px;
   align-items: center;
   justify-content: center;
   color: white;
-  cursor:pointer;
+  transition:1s;
+  // cursor:pointer;
+  :hover {
+    cursor: pointer;
+    transform:scale(1.1)
+    }
 }
 
 
@@ -93,7 +99,6 @@ const Main = () => {
                   weatherType: df.weather ? df.weather[0].main : null,
                   weatherIcon: df.weather ? df.weather[0].icon : null,
                   daysOfWeek: currentDay,
-                  // city: df.city.name,
                   country: df.timezone,
                   feelsLikeDay: df.feels_like.day,
                   feelsLikeNight: df.feels_like.night,
@@ -146,7 +151,6 @@ const Main = () => {
             : 'Find weather by location'}
         </h1>
       </div>
-
       <div className="days-wraper">
         {weatherInfo &&
           weatherInfo.map((i, index) => (
@@ -175,7 +179,7 @@ const Main = () => {
           ))}
       </div>
       <div className="noah" style={{ backgroundImage: `${selectedDay ? `url(${process.env.PUBLIC_URL}/images/${selectedDay.weatherType.toLowerCase()}.jpg)` : 'none'}`, backgroundRepeat: 'no-repeat', backgroundSize: 'cover', backgroundPosition: 'center', borderRadius: '12px' }}>
-        {selectedDay ? (
+        { selectedDay ? (
 
           <DetailWeather
             min={Math.round(selectedDay.min)}
@@ -192,7 +196,6 @@ const Main = () => {
             pressure={Math.round(selectedDay.pressure)}
             newDay={moment(selectedDay.valid_month).format(' MMM, YYYY')}
           />
-
         )
           : (
             <h3>{daysOfWeek.length ? 'Click on a day above to view!' : null}</h3>
