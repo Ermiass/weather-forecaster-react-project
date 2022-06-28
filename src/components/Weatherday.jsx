@@ -2,6 +2,7 @@ import React from 'react';
 
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
+import LoadingSpinner from './LoadingSpinner';
 
 const Days = styled.div`
 .days {
@@ -10,15 +11,23 @@ const Days = styled.div`
   align-items: center;
   justify-content: center;
   color: white;
-  cursor:pointer;
-  padding: 10px;}
+  // cursor:pointer;
+  padding: 10px;
+  :hover {
+    // cursor: pointer;
+    border-color: #00B5E2;
+    }}
 .temp-wrap {
   text-align: center;
   display: flex;
   align-items: center;
   }
+.weekdays{
+  font-size:1.1rem;
+  // color:red;
+}
  `;
-function Weatherday({
+const Weatherday = ({
   min,
   max,
   weatherType,
@@ -26,17 +35,13 @@ function Weatherday({
   daysOfWeek,
   current,
   selectedDayy,
-  country,
-  newDay
-}) {
+
+}) => {
   return (
-    // eslint-disable-next-line jsx-a11y/click-events-have-key-events
     <Days onClick={selectedDayy}>
       <div className="days">
-        <strong>{daysOfWeek}</strong>
-        <div>{newDay}</div>
+        <strong className="weekdays">{daysOfWeek}</strong>
         <strong>{current}</strong>
-        <strong>{country}</strong>
         <img
           src={`https://openweathermap.org/img/w/${weatherIcon}.png`}
           alt={weatherType}
@@ -49,7 +54,7 @@ function Weatherday({
 
     </Days>
   );
-}
+};
 Weatherday.propTypes = {
   min: PropTypes.number.isRequired,
   max: PropTypes.number.isRequired,
