@@ -1,70 +1,59 @@
-# Getting Started with Create React App
+# Weather-Forcaster React  Application 
+## Find the current weather and 7 days forecast of any city on earth with this  web app.
+Technologies: React.js,Redux Styled Components
+Live Demo on [Netlify](https://monitor-weather.netlify.app).
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+---
 
-## Available Scripts
+Simple React web application written with jsx that returns the current weather. The app utilizes:
 
-In the project directory, you can run:
+- OpenWeatherMap's API,
+- OpenWeatherMap's icons for weather icons,  
+- create-react-app tool,
+- Axios and fetch for easy http requests,
 
-### `npm start`
+## Requirements:
+ -[ ] Your app should be set up to use ESLint with the Airbnb style guide and Prettier.
+ -[ ] Your app should have the following devDependencies installed:` eslint eslint-config-airbnb eslint-config-node eslint-config-prettier eslint-plugin-import eslint-plugin-jsx-a11y eslint-plugin-node eslint-plugin-prettier eslint-plugin-react eslint-plugin-react-hooks prettier`
+ -[ ] Your app should also contain `.eslintignore, .eslintrc.json, and .prettierrc files` in the root directory, based on the demo files provided here. Note that you can choose to override some of the default linter rules if necessary, but should strive to stick with the recommended Airbnb rules as much as possible.
+ No code should be merged into main until ALL linter errors are corrected.
+ No code should be merged into main until all console and Terminal errors and warnings are corrected.
+ -[ ] Your app should contain a `functional error boundary` that displays an alternate UI in case of component error.
+ Each component that receives props must have React PropTypes and DefaultProps.
+ -[ ] Your app should have passing component tests for at least two of your main components (SearchBar, DayCard, DayDetails, etc). Any utility functions your app uses (with exception to API calls) should have thorough unit test coverage.
+ Upon initial render, your app should load a 7-day weather forecaset for the default location of your choice.
+ -[ ] Your app should have a search bar that allows a user to specify a new location to search in. After user search, the app should render weather forecast data for the new location.
+ -[ ] The user of your app should be able to enter either a `city/state, a zip code, an address, or a landmark` for their search term. If your weather API relies on a lat/lon for search, use a geocoder to convert the human-friendly search into location coordinates.
+ Each component's props should be destructured for component readibility.
+ Pull data from your external APIs using `axios, fetch,` or a similar tool.
+ Hide any API keys using a .env.local file.
+ -[ ] Your app should have multiple components. Use props to pass data from parent components into child components to allow customization of the child components. (Sometimes it's easiest to start with one or two big components, and to break code out into smaller, more specific components after the core functionality is in place.)
+ -[ ] Make your code as DRY (**D**on't **R**epeat **Y**ourself) as possible!
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+ ## Use Cases for App
 
-### `npm test`
+**User should be able to see**
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+1. Weather Icon
 
-### `npm run build`
+2. Input field with Search button
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+3. Eight day weather forcast
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+4. Detail weather for specfic day
 
-### `npm run eject`
+**User should be able to do**
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+1. The user of your app should be able to enter either a `city/state, a zip code, an address, or a landmark on the search bar
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+2.  Click on a single day and display detail weather information for that specfic day
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+3. detail page will show a background image that corospondes with the weather type
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
 
-## Learn More
+4. Click on refesh button to go back to the home page
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+5. user is able toggle the dark mode and light mode 
 
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
