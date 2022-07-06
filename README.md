@@ -1,7 +1,7 @@
 # Weather-Forcaster React  Application 
 ## Find the current weather and 7 days forecast of any city on earth with this  web app.
 Technologies: React.js,Redux Styled Components
-Live Demo on [Netlify](https://monitor-weather.netlify.app).
+Live Demo on [Netlify]().
 
 ---
 
@@ -42,7 +42,7 @@ Simple React web application written with jsx that returns the current weather. 
 3. Eight day weather forcast
 
 
-4. Detail weather for specfic day
+4. Detail weather for specific day
 
 **User should be able to do**
 
