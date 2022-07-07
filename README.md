@@ -1,4 +1,4 @@
-![Screenshot](screenshot.png)
+![Screenshot](Screenshot.png)
 
 # Weather-Forcaster React  Application 
 ## Find the current weather and 7 days forecast of any city on earth with this  web app.
